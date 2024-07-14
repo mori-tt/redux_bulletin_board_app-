@@ -1,31 +1,29 @@
-# React + TypeScript + Vite
+# Redux Bulletin Board App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+このプロジェクトは、React と Redux Toolkit を使用して構築された掲示板アプリケーションです。ユーザーは投稿を追加および削除することができます。Vite を使用して高速な開発環境を提供し、TypeScript を使用して型安全性を確保しています。
 
-Currently, two official plugins are available:
+## Redux Toolkit
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### ストアの設定
 
-## Expanding the ESLint configuration
+Redux ストアは`src/main.tsx`で設定されています。Redux Toolkit の`configureStore`関数を使用して、`posts`リデューサーを持つストアを作成します。
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### スライス
 
-- Configure the top-level `parserOptions` property like this:
+スライスは、アプリケーションの単一機能のための Redux リデューサーロジックとアクションのコレクションです。`postSlice`は`src/features/Post.tsx`で定義されています。
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### アクションとリデューサー
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-# redux_bulletin_board_app-
+`postSlice`には、`addPost`と`deletePost`の 2 つのリデューサーが含まれています。これらのリデューサーは、新しい投稿の追加と既存の投稿の削除を処理します。
+
+- `addPost`: 新しい投稿を状態に追加します。
+- `deletePost`: 投稿 ID に基づいて状態から投稿を削除します。
+
+## 利用可能なスクリプト
+
+プロジェクトディレクトリ内で実行できるスクリプトは次の通りです:
+
+- `npm run dev`: 開発サーバーを起動します。
+- `npm run build`: 本番環境用にアプリをビルドします。
+- `npm run lint`: ESLint を実行してリントエラーをチェックします。
+- `npm run preview`: 本番ビルドをローカルでプレビューします。
